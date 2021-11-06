@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Nnjeim\World\World;
+
+class CountriesController extends Controller
+{
+    public function show() 
+    {
+        $action =  World::countries([
+	        'fields' => 'states,cities',
+	        'filters' => [
+		        'iso2' => 'TW',
+	        ]
+        ]);
+        if ($action->success) {
+	        $countries = $action->data;
+            echo '國家名稱：' . $countries->first()['name'] . PHP_EOL;
+        }
+    }
+}
