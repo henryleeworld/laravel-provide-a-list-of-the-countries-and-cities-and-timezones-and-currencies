@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
-use Nnjeim\World\Actions\SeedAction;
-
 use Illuminate\Database\Seeder;
+use Nnjeim\World\Actions\SeedAction;
 
 class WorldSeeder extends Seeder
 {
     public function run() {
-        app(SeedAction::class)->execute();
+		$this->call([
+			SeedAction::class,
+		]);
     }
 }
