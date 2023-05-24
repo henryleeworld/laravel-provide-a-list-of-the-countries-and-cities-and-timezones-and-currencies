@@ -3,6 +3,24 @@
 return [
 	/*
 	|--------------------------------------------------------------------------
+	| Allowed countries to be loaded
+	| Leave it empty to load all countries else include the country iso2
+	| value in the allowed_countries array
+	|--------------------------------------------------------------------------
+	*/
+	'allowed_countries' => [],
+
+	/*
+	|--------------------------------------------------------------------------
+	| Disallowed countries to not be loaded
+	| Leave it empty to allow all countries to be loaded else include the
+	| country iso2 value in the disallowed_countries array
+	|--------------------------------------------------------------------------
+	*/
+	'disallowed_countries' => [],
+
+	/*
+	|--------------------------------------------------------------------------
 	| Supported locales.
 	|--------------------------------------------------------------------------
 	*/
@@ -14,6 +32,7 @@ return [
 		'en',
 		'es',
 		'fr',
+		'it',
 		'ja',
 		'kr',
 		'nl',
@@ -21,8 +40,29 @@ return [
 		'pt',
 		'ro',
 		'ru',
-		'zh',
+		'tr',
+		'zh_CN',
+		'zh_TW',
 	],
+	/*
+	|--------------------------------------------------------------------------
+	| Enabled modules.
+	| The cities module depends on the states module.
+	|--------------------------------------------------------------------------
+	*/
+	'modules' => [
+		'states' => true,
+		'cities' => true,
+		'timezones' => true,
+		'currencies' => true,
+		'languages' => true,
+	],
+	/*
+	|--------------------------------------------------------------------------
+	| Routes.
+	|--------------------------------------------------------------------------
+	*/
+	'routes' => true,
 	/*
 	|--------------------------------------------------------------------------
 	| Migrations.
@@ -50,7 +90,7 @@ return [
 					'required' => true,
 					'type' => 'string',
 				],
-				'sub_region' => [
+				'subregion' => [
 					'required' => true,
 					'type' => 'string',
 				],
@@ -76,7 +116,7 @@ return [
 			'table_name' => 'states',
 			'optional_fields' => [
 				'country_code' => [
-					'required' => false,
+					'required' => true,
 					'type' => 'string',
 					'length' => 3,
 				],
@@ -99,7 +139,7 @@ return [
 			'table_name' => 'cities',
 			'optional_fields' => [
 				'country_code' => [
-					'required' => false,
+					'required' => true,
 					'type' => 'string',
 					'length' => 3,
 				],
@@ -127,18 +167,5 @@ return [
 		'languages' => [
 			'table_name' => 'languages',
 		],
-	],
-	/*
-	|--------------------------------------------------------------------------
-	| Enabled seeders.
-	| The cities seeder depends on the states seeder.
-	|--------------------------------------------------------------------------
-	*/
-	'seeders' => [
-		'states' => true,
-		'cities' => true,
-		'timezones' => true,
-		'currencies' => true,
-		'languages' => true,
 	],
 ];

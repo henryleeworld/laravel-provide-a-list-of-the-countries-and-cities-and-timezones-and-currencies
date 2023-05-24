@@ -8,7 +8,7 @@ class CountriesController extends Controller
 {
     public function show() 
     {
-        $action =  World::countries([
+        $action = World::setLocale('zh_TW')->countries([
 	        'fields' => 'states,cities',
 	        'filters' => [
 		        'iso2' => 'TW',
