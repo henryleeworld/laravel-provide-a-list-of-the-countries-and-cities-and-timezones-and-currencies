@@ -32,6 +32,7 @@ return [
 		'en',
 		'es',
 		'fr',
+		'hr',
 		'it',
 		'ja',
 		'kr',
@@ -63,6 +64,12 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 	'routes' => true,
+    /*
+	|--------------------------------------------------------------------------
+	| Connection.
+	|--------------------------------------------------------------------------
+	*/
+    'connection' => env('WORLD_DB_CONNECTION', env('DB_CONNECTION')),
 	/*
 	|--------------------------------------------------------------------------
 	| Migrations.
@@ -123,7 +130,11 @@ return [
 				'state_code' => [
 					'required' => false,
 					'type' => 'string',
-					'length' => 3,
+					'length' => 5,
+				],
+				'type' => [
+					'required' => false,
+					'type' => 'string',
 				],
 				'latitude' => [
 					'required' => false,
@@ -146,7 +157,7 @@ return [
 				'state_code' => [
 					'required' => false,
 					'type' => 'string',
-					'length' => 3,
+					'length' => 5,
 				],
 				'latitude' => [
 					'required' => false,

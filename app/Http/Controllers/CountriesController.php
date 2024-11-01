@@ -16,7 +16,7 @@ class CountriesController extends Controller
         ]);
         if ($action->success) {
 	        $countries = $action->data;
-            echo '國家名稱：' . $countries->first()['name'] . PHP_EOL;
+            echo __('Country name:') . $countries->first()['name'] . PHP_EOL;
         }
     }
 }
