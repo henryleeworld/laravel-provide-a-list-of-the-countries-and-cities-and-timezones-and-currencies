@@ -6,6 +6,9 @@ use Nnjeim\World\World;
 
 class CountriesController extends Controller
 {
+    /**
+     * Display the specified resource.
+     */
     public function show() 
     {
         $action = World::setLocale('zh_TW')->countries([
