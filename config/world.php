@@ -30,6 +30,7 @@ return [
 
 	'accepted_locales' => [
 		'ar',
+		'az',
 		'bn',
 		'br',
 		'de',
@@ -38,14 +39,17 @@ return [
 		'fa',
 		'fr',
 		'hr',
+		'hy',
 		'it',
 		'ja',
 		'kr',
+		'ne',
 		'nl',
 		'pl',
 		'pt',
 		'ro',
 		'ru',
+		'sw',
 		'tr',
 		'zh_CN',
 		'zh_TW',
@@ -64,6 +68,7 @@ return [
 		'timezones' => true,
 		'currencies' => true,
 		'languages' => true,
+		'geolocate' => true,
 	],
 
 	/*
@@ -207,6 +212,50 @@ return [
 		'languages' => \Nnjeim\World\Models\Language::class,
 		'states' => \Nnjeim\World\Models\State::class,
 		'timezones' => \Nnjeim\World\Models\Timezone::class,
+	],
+
+	/*
+	|--------------------------------------------------------------------------
+	| Geolocation Settings.
+	| Uses MaxMind GeoLite2 database for IP-based geolocation.
+	|--------------------------------------------------------------------------
+	*/
+
+	'geolocate' => [
+		/*
+		|--------------------------------------------------------------------------
+		| GeoIP Database Path.
+		| Path to the MaxMind GeoLite2-City.mmdb database file.
+		|--------------------------------------------------------------------------
+		*/
+		'database_path' => storage_path('app/geoip/GeoLite2-City.mmdb'),
+
+		/*
+		|--------------------------------------------------------------------------
+		| Cache TTL.
+		| How long to cache geolocation results in seconds.
+		| Default: 86400 (24 hours)
+		|--------------------------------------------------------------------------
+		*/
+		'cache_ttl' => env('WORLD_GEOLOCATE_CACHE_TTL', 86400),
+
+		/*
+		|--------------------------------------------------------------------------
+		| MaxMind License Key.
+		| Required for automatic database downloads.
+		| Get a free license key at: https://www.maxmind.com/en/geolite2/signup
+		|--------------------------------------------------------------------------
+		*/
+		'maxmind_license_key' => env('MAXMIND_LICENSE_KEY'),
+
+		/*
+		|--------------------------------------------------------------------------
+		| Fallback API.
+		| If true, uses ip-api.com when GeoLite2 database is not available.
+		| ip-api.com is free (45 requests/minute) and requires no license.
+		|--------------------------------------------------------------------------
+		*/
+		'fallback_api' => env('WORLD_GEOLOCATE_FALLBACK_API', true),
 	],
 
 ];

@@ -13,5 +13,6 @@ return [
 		'timezone' => '時區|時區',
 		'currency' => '貨幣|貨幣',
 		'language' => '語言|語言',
+		'geolocate' => '地理位置|地理位置',
 	],
 ];
